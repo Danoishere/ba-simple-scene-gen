@@ -283,7 +283,7 @@ def render_frames(objs):
 
 
 w,h = 128, 128
-training_data = "D:/training-data-very-simple-ss/"
+training_data = "D:/training-data-relative-pos-with-obstacle/"
 tmp_path = tempfile.gettempdir() + os.path.sep
 
 for episode in range(100000):
@@ -303,13 +303,11 @@ for episode in range(100000):
     scene["objects"] = objs
     scene["cam_base_matricies"] = cam_base_mat
     scene["ss_objs"] = ss_objs
-    print(scene)
 
     files = []
     img_path = scene_id + "-combined.npz"
     np.savez_compressed(training_data + img_path, rgb=rgb_imgs, depth=depth_imgs)
     files.append(img_path)
-
 
     scene_filename = scene_id + '-scene.json'
     files.append(scene_filename)
