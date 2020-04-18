@@ -31,9 +31,7 @@ process_id = str(uuid.uuid1())
 
 def clear_placed_objects():
     cs_col = bpy.data.collections['PlacedObjects']
-    objs = bpy.data.objects
-    for obj in cs_col.all_objects:
-        objs.remove(objs[obj.name], do_unlink=True)
+    bpy.ops.object.delete({"selected_objects": cs_col.all_objects})
 
 
 def get_random_available_objects():
